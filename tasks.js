@@ -287,12 +287,24 @@ for (let i = 0; i < booksWithThe.length; i++) {
 }
 console.log();
 
+function booksByAuthorWithT(books) {
+  let result = [];
+  for (let i = 0; i < books.length; i++) {
+    let authorFull = books[i].author;
+    let mainAuthor = authorFull.split('(')[0].trim();
+    if (mainAuthor.indexOf('t') !== -1 || mainAuthor.indexOf('T') !== -1) {
+      result.push(books[i]);
+    }
+  }
+  return result;
+}
 console.log("Books with 't' in the author's name:");
 let booksWithT = booksByAuthorWithT(books);
 for (let i = 0; i < booksWithT.length; i++) {
   console.log(" -", booksWithT[i].title, "by", booksWithT[i].author);
 }
 console.log();
+
 
 console.log("Books after 1992:", countBooksAfterYear(books, 1992));
 console.log("Books before 2004:", countBooksBeforeYear(books, 2004));
